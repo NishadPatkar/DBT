@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: INPUT
+    database: TEST
+    schema: DBT_S
+    tables:
+      - name: CUSTOMERS
+      - name: ORDERS
+      - name: PRODUCT

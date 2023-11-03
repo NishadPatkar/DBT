@@ -1,4 +1,3 @@
-
 version: 2
 
 models:
@@ -15,6 +14,50 @@ models:
       description: "A starter dbt model"
       columns:
           - name: id
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+
+    - name: stg_orders
+      description: "A order dbt model"
+      columns:
+          - name: OrderID
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+          - name: Ship_Mode
+            tests:
+              - accepted_values:
+                  values:
+                   - 'First Class'
+                   - 'Same Day'
+                   - 'Second Class'
+                   - 'Standard Class'
+            
+    - name: stg_customers
+      description: "A customers dbt model"
+      columns:
+          - name: CustomerID
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+
+    - name: stg_product
+      description: "A products dbt model"
+      columns:
+          - name: ProductID
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+
+    - name: INT_orders
+      description: "A products dbt model"
+      columns:
+          - name: ProductID
             description: "The primary key for this table"
             tests:
                 - unique
